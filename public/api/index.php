@@ -8,7 +8,7 @@ headers();
 
 $n = "Formsus"; // namespace
 $r = getRequest(); // request
-$nc = $n . '\\' . $r->c; // Namespace\\Class
+$nc = $n . '\\' . ucfirst($r->c); // Namespace\\Class
 
 $nc = new $nc();
 $nc->{$r->m}();
