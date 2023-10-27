@@ -1,0 +1,57 @@
+version: "3"
+
+services:
+  apache_php:
+    build: .
+    hostname: formsus
+    extra_hosts:
+      - formsus.local:127.0.0.1
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./:/var/www/formsus
+      - ./.simoa/.apache/vhosts:/etc/apache2/sites-available
+    networks:
+      pucminas_network:
+        aliases:
+          - formsus
+
+  solr:
+    image: solr:8.6
+    hostname: solr.local
+    restart: unless-stopped
+    ports:
+      - "8900:8983"
+    volumes:
+      - ./.simoa/.solr:/var/solr/data
+    networks:
+      pucminas_network:
+        aliases:
+          - formsus.solr
+
+#   mongo:
+#     image: mongo
+#     hostname: service_mongo
+#     restart: always
+#     environment:
+#       MONGO_INITDB_ROOT_USERNAME:
+#       MONGO_INITDB_ROOT_PASSWORD:
+#     volumes:
+#       - db:/data/db
+
+volumes:
+  app:
+  db:
+  # nfsmount:
+  #   driver: local
+  #   driver_opts:
+  #     type: nfs
+  #     o: addr=host.docker.internal,rw,nolock,hard,nointr,nfsvers=3
+  #     device: ":/System/Volumes/Data/${PWD}"
+
+networks:
+  pucminas_network:
+    name: pucminasnet
+    driver: bridge
+    ipam:
+      driver: default
