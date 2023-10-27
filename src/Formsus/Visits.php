@@ -56,10 +56,21 @@ class Visits extends Db
     // 1698419977
     $doc = $this->findOne("id:" . $data->id);
 
+    $Citizen = new Citizen();
+    $cidadao = $Citizen->query("cnsCidadao:" . $data->cnsCidadao);
+
+    if ($cidadao->numFound == 0) {
+      $this->response->error("Cidadão não encontrado")->echo();
+      exit;
+    }
+
+    $cidadao = $cidadao->docs[0];
+
 
 
     $result = $this->commit([
       $doc,
+      $cidadao,
       $data
     ], ["_version_"]);
 
@@ -71,5 +82,19 @@ class Visits extends Db
       $this->response->log($result);
       $this->response->error("Não foi possível atualizar a visita")->echo();
     }
+  }
+
+  function list()
+  {
+    if (!isset($_GET['cns'])) { // se não mandou CNS, retorna erro
+      $this->response->error('Favor enviar código CNS')->echo();
+      exit;
+    }
+
+    $cns = $_GET['cns'];
+
+    $response = $this->query("cns:$cns");
+
+    $this->response->log($response)->echo();
   }
 }

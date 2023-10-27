@@ -55,7 +55,7 @@ class Db
     $doc = new Solr\Document($this->url);
     $doc->id = $id;
     $doc->solrId = $solrId;
-    $doc->module = $this->module;
+
 
     foreach ($values as $o) {
       foreach ($o as $k => $v) {
@@ -67,6 +67,8 @@ class Db
     foreach ($unset as $item) {
       unset($doc->$item);
     }
+
+    $doc->module = $this->module;
 
     $commit = $doc->commit();
     $commit->id = $id;

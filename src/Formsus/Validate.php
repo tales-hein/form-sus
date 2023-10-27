@@ -129,6 +129,7 @@ class Validate
         $data,
         [
           "id",
+          "cnsCidadao"
         ]
       )
     );
