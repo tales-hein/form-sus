@@ -162,6 +162,13 @@
    <field name="prontuario" type="pint" indexed="true" stored="true"/>
    <field name="compartilhada" type="boolean" indexed="true" stored="true"/>
 
+   <field name="cnsCidadao" type="string" indexed="true" stored="true"/>
+   <field name="nomeCompleto" type="string" indexed="true" stored="true"/>
+   <field name="nascimento" type="pdate" indexed="true" stored="true"/>
+   <field name="sexo" type="string" indexed="true" stored="true"/>
+   <field name="peso" type="pfloat" indexed="true" stored="true"/>
+   <field name="altura" type="pfloat" indexed="true" stored="true"/>
+
    
    <!-- multi languages -->
    <field name="language" type="string" indexed="true" stored="true" />

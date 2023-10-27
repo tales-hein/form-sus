@@ -94,3 +94,13 @@ function data()
     }
   }
 }
+
+
+function solrDate($prop)
+{
+  $d = substr($prop, 0, 2);
+  $m = substr($prop, 3, 2);
+  $y = substr($prop, 6, 4);
+
+  return "$y-$m-$d" . "T00:00:00Z";
+}

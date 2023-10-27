@@ -39,6 +39,20 @@ class Validate
     return !is_bool($prop) ? $prop . " deve ser booleano" : null;
   }
 
+  function float($prop)
+  {
+    return !is_float($prop) ? $prop . " deve ser float" : null;
+  }
+
+  function date($prop)
+  {
+    $d = substr($prop, 0, 2);
+    $m = substr($prop, 3, 2);
+    $y = substr($prop, 6, 4);
+
+    return !checkdate($m, $d, $y) ? $prop . " deve ser data válida" : null;
+  }
+
   function createVisit($data)
   {
     $errors = [];
@@ -79,6 +93,42 @@ class Validate
       $values[] = (strlen($i) == 1) ? "0" . $i : $i;
     }
     $errors[] = $this->value($data, "imovel", $values);
+
+    return array_filter($errors);
+  }
+
+  function createCitizen($data)
+  {
+    $errors = [];
+
+    $errors = array_merge(
+      $errors,
+      $this->empty(
+        $data,
+        [
+          "cns",
+          "cnsCidadao",
+          "nomeCompleto",
+          "nascimento",
+          "sexo",
+          "peso",
+          "altura"
+        ]
+      )
+    );
+
+    if (count($errors) > 0) {
+      return $errors;
+    }
+
+    $errors[] = $this->value($data, "sexo", [
+      "M",
+      "F"
+    ]);
+
+    $errors[] = $this->date($data->nascimento);
+    $errors[] = $this->float($data->peso);
+    $errors[] = $this->float($data->altura);
 
     return array_filter($errors);
   }
