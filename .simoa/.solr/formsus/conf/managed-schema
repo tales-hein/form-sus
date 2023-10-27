@@ -169,6 +169,11 @@
    <field name="peso" type="pfloat" indexed="true" stored="true"/>
    <field name="altura" type="pfloat" indexed="true" stored="true"/>
 
+  <field name="geral" type="string" indexed="true" stored="true" multiValued="true"/>
+  <field name="buscaAtiva" type="string" indexed="true" stored="true" multiValued="true"/>
+  <field name="acompanhamento" type="string" indexed="true" stored="true" multiValued="true"/>
+  <field name="controleAmbientalVetorial" type="string" indexed="true" stored="true" multiValued="true"/>
+  <field name="desfecho" type="string" indexed="true" stored="true" multiValued="true"/>
    
    <!-- multi languages -->
    <field name="language" type="string" indexed="true" stored="true" />

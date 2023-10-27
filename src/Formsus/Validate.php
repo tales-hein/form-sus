@@ -26,11 +26,33 @@ class Validate
     return $errors;
   }
 
+  function isset($data, $props)
+  {
+    $errors = [];
+    foreach ($props as $v) {
+      if (!isset($data->$v)) {
+        $errors[] = $v . " precisa ser enviado";
+      }
+    }
+
+    return $errors;
+  }
+
   function value($data, $prop, $values)
   {
     if (!in_array($data->$prop, $values)) {
       return $prop . " inválido. Valores aceitos: "
         . implode(", ", $values);
+    }
+  }
+
+  function arrayValues($data, $prop, $values)
+  {
+    foreach ($data->$prop as $item) {
+      if (!in_array($item, $values)) {
+        return $prop . " inválido. Valores aceitos: "
+          . implode(", ", $values);
+      }
     }
   }
 
@@ -93,6 +115,96 @@ class Validate
       $values[] = (strlen($i) == 1) ? "0" . $i : $i;
     }
     $errors[] = $this->value($data, "imovel", $values);
+
+    return array_filter($errors);
+  }
+
+  function updateVisit($data)
+  {
+    $errors = [];
+
+    $errors = array_merge(
+      $errors,
+      $this->empty(
+        $data,
+        [
+          "id",
+        ]
+      )
+    );
+
+    $errors = array_merge(
+      $errors,
+      $this->isset(
+        $data,
+        [
+          "geral",
+          "buscaAtiva",
+          "acompanhamento",
+          "controleAmbientalVetorial",
+          "desfecho"
+        ]
+      )
+    );
+
+
+
+    if (count($errors) > 0) {
+      return $errors;
+    }
+
+    $errors[] = $this->arrayValues($data, "geral", [
+      "cadastramentoAtualizacao",
+      "visitaPeriodica",
+      "egressoDeInternacao",
+      "conviteAtividadesColetivasCampanhaDeSaude",
+      "orientacaoPrevencao",
+      "outros"
+    ]);
+
+    $errors[] = $this->arrayValues($data, "buscaAtiva", [
+      "consulta",
+      "exame",
+      "vacina"
+    ]);
+
+    $errors[] = $this->arrayValues($data, "acompanhamento", [
+      "gestante",
+      "puerpera",
+      "recemNascido",
+      "crianca",
+      "pessoaComDesnutricao",
+      "pessoaEmReabilitacaoOuComDeficiencia",
+      "pessoaComHipertensao",
+      "pessoaComDiabetes",
+      "pessoaComAsma",
+      "pessoaComDPOCEnfisema",
+      "pessoaComCancer",
+      "pessoaComOutrasDoencasCronicas",
+      "pessoaComHanseniase",
+      "pessoaComTuberculose",
+      "sintomaticosRespiratorios",
+      "tabagista",
+      "domiciliadosAcamados",
+      "condicoesDeVulnerabilidadeSocial",
+      "condicionalidadesDoBolsaFamilia",
+      "saudeMental",
+      "usuarioDeAlcool",
+      "usuárioDeOutrasDrogas"
+    ]);
+
+    $errors[] = $this->arrayValues($data, "controleAmbientalVetorial", [
+      "acaoEducativa",
+      "imovelComFoco",
+      "acaoMecanica",
+      "tratamentoFocal"
+    ]);
+
+    $errors[] = $this->value($data, "desfecho", [
+      "realizada",
+      "recusada",
+      "ausente"
+    ]);
 
     return array_filter($errors);
   }

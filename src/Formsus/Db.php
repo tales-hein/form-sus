@@ -17,6 +17,11 @@ class Db
     $this->response = new Response();
   }
 
+  function findOne($q)
+  {
+    return $this->query($q)->docs[0];
+  }
+
   function query($q, $props = [])
   {
     $q = "(module:" . $this->module . ") AND (" . $q . ")";
@@ -30,12 +35,25 @@ class Db
     return $Solr->query()->response;
   }
 
+  function id($values)
+  {
+    foreach ($values as $o) {
+      if (property_exists($o, "id")) {
+        return $o->id;
+      }
+    }
+    return time();
+  }
+
   // values => array of objects
   // unset => array of strings
   function commit($values = [], $unset = [])
   {
-    $solrId = "formsus/" . $this->module . "/" . time();
+
+    $id = $this->id($values);
+    $solrId = "formsus/" . $this->module . "/" . $id;
     $doc = new Solr\Document($this->url);
+    $doc->id = $id;
     $doc->solrId = $solrId;
     $doc->module = $this->module;
 
@@ -51,7 +69,7 @@ class Db
     }
 
     $commit = $doc->commit();
-    $commit->id = $solrId;
+    $commit->id = $id;
 
     return $commit;
   }
