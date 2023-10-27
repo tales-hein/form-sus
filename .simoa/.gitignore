@@ -1,0 +1,5 @@
+.data
+.history
+.solr/*/data
+.solr/solr.xml
+.solr/zoo.cfg

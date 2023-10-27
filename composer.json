@@ -1,0 +1,22 @@
+{
+  "name": "pucminas/formsus",
+  "authors": [{
+    "name": "formsus",
+    "email": "eu@eric.com.br"
+  }],
+  "minimum-stability": "dev",
+  "autoload": {
+    "psr-4": {
+      "Formsus\\": "src/Formsus/"
+    },
+    "files": [
+      "src/fn.php"
+    ]
+  },
+  "require": {
+    "mantoani/cli": "*",
+    "mantoani/solr": "*",
+    "firebase/php-jwt": "^5.2.0",
+    "symfony/yaml": "5.3.2"
+  }
+}
