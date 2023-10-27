@@ -34,8 +34,9 @@ class Db
   // unset => array of strings
   function commit($values = [], $unset = [])
   {
+    $solrId = "formsus/" . $this->module . "/" . time();
     $doc = new Solr\Document($this->url);
-    $doc->solrId = "formsus/" . $this->module . "/" . time();
+    $doc->solrId = $solrId;
     $doc->module = $this->module;
 
     foreach ($values as $o) {
@@ -49,6 +50,9 @@ class Db
       unset($doc->$item);
     }
 
-    return $doc->commit();
+    $commit = $doc->commit();
+    $commit->id = $solrId;
+
+    return $commit;
   }
 }

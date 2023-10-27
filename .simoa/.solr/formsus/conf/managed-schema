@@ -155,6 +155,13 @@
    <field name="password" type="string" indexed="true" stored="true"/>
    <field name="cbo" type="string" indexed="true" stored="true"/>
    <field name="funcao" type="string" indexed="true" stored="true"/>
+
+   <field name="turno" type="string" indexed="true" stored="true"/>
+   <field name="microarea" type="string" indexed="true" stored="true"/>
+   <field name="imovel" type="string" indexed="true" stored="true"/>
+   <field name="prontuario" type="pint" indexed="true" stored="true"/>
+   <field name="compartilhada" type="boolean" indexed="true" stored="true"/>
+
    
    <!-- multi languages -->
    <field name="language" type="string" indexed="true" stored="true" />
