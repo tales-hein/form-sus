@@ -97,4 +97,18 @@ class Visits extends Db
 
     $this->response->log($response)->echo();
   }
+
+  function byId()
+  {
+    if (!isset($_GET['id'])) { // se não mandou ID, retorna erro
+      $this->response->error('Favor enviar o ID')->echo();
+      exit;
+    }
+
+    $id = $_GET['id'];
+
+    $response = $this->query("id:$id");
+
+    $this->response->log($response)->echo();
+  }
 }
