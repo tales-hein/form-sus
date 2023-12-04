@@ -1,0 +1,433 @@
+body, html {
+    margin: 0;
+    padding: 0;
+ }
+
+body {
+    color: white;
+    word-wrap: break-word;
+    font-family: 'Noto Sans';
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+span {
+    color: #35373B;
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.descricao-input {
+    padding: 5px; 
+    color: #35373B; 
+    font-size: 20px; 
+    font-weight: 400;
+}
+
+.input-wrapper {
+    align-items: center;
+}
+
+.btns-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.input-checkbox-quadrado {
+    appearance: none;
+    border: 1px solid #35373B;
+    border-radius: 6px;
+    width: 45px; 
+    height:45px;
+}
+
+.input-checkbox-quadrado:hover {
+    cursor: pointer;
+    border: solid 3px #1d72bd;
+}
+
+.input-checkbox-quadrado:checked {
+    border: solid 3px #1d72bd;
+}
+
+.input-checkbox-quadrado:checked:after {
+	content: '\2717';
+	font-size: 38px;
+    color: #004F96;
+	position: relative;
+    left: 3px;
+    bottom: 2px;
+}
+
+.header {
+    padding-bottom: 10%;
+    z-index: 9999;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    overflow: hidden;
+    width: 100%;
+    font-size: 20px;
+    font-weight: 600;
+    background-color: #004F96;
+    padding: 8px 30px;
+}
+
+.login-content {
+    justify-content: center;
+    align-items: center;
+    width: 450px;
+    height: 320px;
+    background-color: #fff;
+    border-radius: 8px;
+    border: solid 2px #ABB9C0;
+    display: flex;
+    flex-direction: column;
+}
+
+.content-wrapper {
+    position:relative;
+    flex: 1;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.primeiro-login-content {
+    justify-content: center;
+    align-items: center;
+    width: 450px;
+    height: 800px;
+    background-color: #fff;
+    border-radius: 8px;
+    border: solid 2px #ABB9C0;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-info-geral {
+    position:absolute;
+    top:0px;
+    left:0;
+    justify-content: center;
+    align-items: center;
+    width: 450px;
+    height: 900px;
+    background-color: #fff;
+    border-radius: 8px;
+    border: solid 2px #ABB9C0;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-info-pessoal {
+    position:absolute;
+    top:00px;
+    left:0;
+    justify-content: center;
+    align-items: center;
+    width: 450px;
+    height: 1000px;
+    background-color: #fff;
+    border-radius: 8px;
+    border: solid 2px #ABB9C0;
+    display: flex;
+    flex-direction: column;
+}
+
+.wrapper-sidenav-e-form {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    width: 30%; 
+    padding-right: 3rem;
+    padding-top: 3rem;
+    padding-bottom: 10rem;
+}
+
+@media only screen and (max-width: 768px) {
+    .wrapper-sidenav-e-form {
+      width: 100%;
+    }
+}
+
+.login-ja-cadastrado-content {
+    justify-content: center;
+    align-items: center;
+    width: 450px;
+    height: 470px;
+    background-color: #fff;
+    border-radius: 8px;
+    border: solid 2px #ABB9C0;
+    display: flex;
+    flex-direction: column;
+}
+
+.menu-principal-content {
+    justify-content: center;
+    align-items: center;
+    width: 450px;
+    height: 370px;
+    background-color: #fff;
+    border-radius: 8px;
+    border: solid 2px #ABB9C0;
+    display: flex;
+    flex-direction: column;
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    flex-shrink: 0;
+    width: 100%;
+    font-size: 14px;
+    font-weight: 400;
+    padding: 8px 10px;
+    display: flex;
+    justify-content: space-around;
+    background-color: #004F96;
+}
+
+.input {
+    width: 360px; 
+    height: 50px;
+    border-radius: 8px; 
+    border: 1px #ABB9C0 solid; 
+    justify-content: flex-start; 
+    align-items: center;
+    font-size: 20px;
+    display: inline-flex;
+    padding-left: 20px;
+}
+
+.btn-voltar  {
+    border: solid 2px #004F96;
+    cursor: pointer;
+    color: #004F96;
+    border-radius: 8px;
+    background-color: #fff;
+    padding: 5px; 
+    font-size: 20px; 
+    width: 150px; 
+    height: 50px;
+}
+
+.btn-voltar:hover {
+    color: #1d72bd;
+    border: solid 4px #1d72bd;
+}
+
+.btn-avancar {
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    color: #fff;
+    background-color: #004F96;
+    padding: 5px; 
+    font-size: 20px; 
+    width: 150px; 
+    height: 50px;
+}
+
+.btn-avancar:hover {
+    background-color: #1d72bd;
+}
+
+.btn-acessar {
+    border: none;
+    cursor: pointer;
+    width: 360px; 
+    height: 50px;
+    border-radius: 8px;
+    font-size: 20px;
+    font-weight: 600;
+    justify-content: center; 
+    align-items: center;
+    color: #fff;
+    background-color: #004F96;
+    display: inline-flex;
+}
+
+.btn-acessar:hover {
+    background-color: #1d72bd;
+}
+
+.btn-primary-menu {
+    border: none;
+    cursor: pointer;
+    width: 360px; 
+    height: 50px;
+    border-radius: 8px;
+    font-size: 20px;
+    font-weight: 600;
+    justify-content: center; 
+    align-items: center;
+    color: #fff;
+    background-color: #004F96;
+    display: inline-flex;
+    justify-content: space-between;
+    padding-right: 30px;
+    padding-left: 20px;
+}
+
+.btn-primary-menu:hover {
+    background-color: #1d72bd;
+}
+
+.btn-secondary-menu {
+    border: solid 2px #004F96;
+    cursor: pointer;
+    color: #004F96;
+    border-radius: 8px;
+    background-color: #fff;
+    padding: 5px; 
+    font-size: 20px;
+    font-weight: 600;
+    width: 360px; 
+    height: 50px;
+    justify-content: space-between;
+}
+
+.btn-secondary-menu:hover {
+    color: #1d72bd;
+    border: solid 4px #1d72bd;
+}
+
+.btn-primary-menu-small {
+    border: none;
+    cursor: pointer;
+    width: 150px; 
+    height: 50px;
+    border-radius: 8px;
+    font-size: 20px;
+    font-weight: 600;
+    justify-content: center; 
+    align-items: center;
+    color: #fff;
+    background-color: #004F96;
+}
+
+.btn-primary-menu-small:hover {
+    background-color: #1d72bd;
+}
+
+.btn-secondary-menu-small {
+    border: solid 2px #004F96;
+    cursor: pointer;
+    color: #004F96;
+    border-radius: 8px;
+    background-color: #fff;
+    padding: 5px; 
+    font-size: 20px;
+    font-weight: 600;
+    width: 150px; 
+    height: 50px;
+}
+
+.btn-secondary-menu-small:hover {
+    color: #1d72bd;
+    border: solid 4px #1d72bd;
+}
+
+.checkboxes-visita-comp {
+    padding-left: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.checkbox-redondo {
+    width: 45px;
+    height: 45px;
+    background-color: white;
+    border-radius: 50%;
+    vertical-align: middle;
+    border: 1px solid #35373B;
+    appearance: none;
+    -webkit-appearance: none;
+    outline: none;
+    cursor: pointer;
+}
+.checkbox-redondo:hover {
+    border: solid 3px #1d72bd;
+}
+
+.checkbox-redondo:checked {
+    border: solid 3px #1d72bd;
+}
+
+.checkbox-redondo:checked:after {
+    content: '\2717';
+	font-size: 38px;
+    color: #004F96;
+	position: relative;
+    left: 3px;
+    bottom: 2px;
+}
+
+label {
+    color: #35373B;
+    font-size: 18px;
+}
+
+.btn-side-nav {
+    border: none; 
+    cursor: pointer;
+    background-color:white;
+}
+
+.background-btn-side-nav {
+    width: 60px; 
+    height: 60px; 
+    left: 0.50px; 
+    top: 0px; 
+    position: absolute;
+    background: #004F96; 
+    border-radius: 8px;
+}
+
+.wrapper-icone-btn:hover .background-btn-side-nav {
+    background: #1d72bd;
+}
+
+.wrapper-icone {
+    left: 6px; 
+    top: 6px; 
+    position: absolute; 
+    color: white; 
+    font-size: 28px; 
+    font-weight: 600; 
+    word-wrap: break-word
+}
+
+.wrapper-icone-btn {
+    width: 60px; 
+    height: 60px; 
+    position: relative; 
+    border-radius: 8px
+}
+
+.wrapper-icone-numero-sidenav {
+    left: 22.50px; top: 11px; 
+    position: absolute; 
+    color: white; 
+    font-size: 28px; 
+    font-family: Noto Sans; 
+    font-weight: 600; 
+    word-wrap: break-word
+}
+
+.wrapper-sidenav {
+    display: inline-block; 
+    padding-top:30px; 
+    padding: 1rem 1rem; 
+    vertical-align: middle;
+}
+
+.navegador-lateral-wrapper {
+    display: flex; 
+    flex-direction:column; 
+    width: 60px;
+}
